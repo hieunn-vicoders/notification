@@ -31,7 +31,7 @@ In `.env` file, we need some configuration.
 
 ```
 // Communication microservice url
-WEBPRESS_NOTIFICATION_BASE_URL=http://localhost:3000/api
+WEBPRESS_NOTIFICATION_BASE_URL=https://api.dev.webpress.vn/communication
 ```
 
 ## Notification Channels

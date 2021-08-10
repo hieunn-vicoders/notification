@@ -13,7 +13,7 @@ class WebpressNotificationApi
     public function __construct()
     {
         $this->baseUrl = config('webpress-notification.base_url');
-        $this->version = config('webpress-notification.version') ?: 'v1';
+        $this->version = config('webpress-notification.version') ?: 'v1.0';
         if (!$this->baseUrl) {
             throw new Exception('Webpress base URL is missing');
         }
