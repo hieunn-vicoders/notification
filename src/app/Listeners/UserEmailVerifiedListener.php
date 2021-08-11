@@ -28,12 +28,12 @@ class UserEmailVerifiedListener
     {
         $user = $event->user;
         $user->notify(new MailVerify(
-            'https://cdn.zeplin.io/5d8877494f3ff161cea03412/assets/6e98e7c5-5202-4868-9b06-528add66309e.png',
+            'https://vmms.vn/assets/images/img/logo-nen.png',
+            'https://www.facebook.com/VMMS-326462230790779',
             null,
             null,
-            null,
-            '0987654321',
-            'email_develop@vicoders.com',
+            '(+84-4) 3562.6296',
+            'info@vmms.vn',
             null,
             null,
             null,
