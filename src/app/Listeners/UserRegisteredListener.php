@@ -36,7 +36,7 @@ class UserRegisteredListener
             null,
             null,
             null,
-            $user->name,
+            $user->username,
             $user->email,
             asset("verify/{$user->id}?token={$user->verify_token}")
         ));
