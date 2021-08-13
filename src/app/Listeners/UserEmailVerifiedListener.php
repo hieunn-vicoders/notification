@@ -37,7 +37,7 @@ class UserEmailVerifiedListener
             null,
             null,
             null,
-            $user->name,
+            $user->username,
             $user->email,
             route('login')
         ));

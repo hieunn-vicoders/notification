@@ -38,7 +38,7 @@ class AdminResendPasswordListener
             null,
             null,
             null,
-            $user->name,
+            $user->username,
             $user->email,
             "{$reset_password_url}?token={$token}"
         ));
