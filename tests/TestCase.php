@@ -2,8 +2,14 @@
 
 namespace VCComponent\Laravel\Notification\Test;
 
+use Cviebrock\EloquentSluggable\ServiceProvider;
+use Dingo\Api\Provider\LaravelServiceProvider;
+use NF\Roles\RolesServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use VCComponent\Laravel\Notification\Providers\NotificationServiceProvider;
+use VCComponent\Laravel\Notification\Test\Stub\Entities\User;
+use VCComponent\Laravel\User\Providers\UserComponentProvider;
+use VCComponent\Laravel\User\Providers\UserComponentRouteProvider;
 
 class TestCase extends OrchestraTestCase
 {
@@ -17,7 +23,14 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
+            LaravelServiceProvider::class,
             NotificationServiceProvider::class,
+            ServiceProvider::class,
+            \Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+            \Illuminate\Auth\AuthServiceProvider::class,
+            UserComponentProvider::class,
+            UserComponentRouteProvider::class,
+            RolesServiceProvider::class,
         ];
     }
 
@@ -46,9 +59,30 @@ class TestCase extends OrchestraTestCase
             'prefix'   => '',
         ]);
         $app['config']->set('webpress-notification', [
-            'base_url' => 'https://api.dev.webpress.vn/communication',
-            'version'  => 'v1.0',
+            'namespace' => '',
+
+            'models' => [
+                'notifcation' => \VCComponent\Laravel\Notification\Entities\Notification::class,
+                'notifcation-setting' => \VCComponent\Laravel\Notification\Entities\NotificationSetting::class,
+                'notifcation-variant' => \VCComponent\Laravel\Notification\Entities\TemplateVariant::class,
+            ],
+
+            'base_url' => env('WEBPRESS_NOTIFICATION_BASE_URL', 'https://api.dev.webpress.vn/communication'),
+
+            'version'  => env('WEBPRESS_NOTIFICATION_VERSION', 'v1.0'),
+
+            'auth_middleware' => [
+                'admin'    => [
+                    [
+                        'middleware' => null,
+                        'except'     => null,
+                    ],
+                ],
+            ],
         ]);
+        $app['config']->set('jwt.secret', '5jMwJkcDTUKlzcxEpdBRIbNIeJt1q5kmKWxa0QA2vlUEG6DRlxcgD7uErg51kbBl');
+        $app['config']->set('auth.providers.users.model', User::class);
+        $app['config']->set('repository.cache.enabled', false);
         $app['config']->set('api', [
             'standardsTree'      => 'x',
             'subtype'            => '',
@@ -66,12 +100,9 @@ class TestCase extends OrchestraTestCase
                 'status_code' => ':status_code',
                 'debug'       => ':debug',
             ],
-            'middleware'         => [
-            ],
-            'auth'               => [
-            ],
-            'throttling'         => [
-            ],
+            'middleware'         => [],
+            'auth'               => [],
+            'throttling'         => [],
             'transformer'        => \Dingo\Api\Transformer\Adapter\Fractal::class,
             'defaultFormat'      => 'json',
             'formats'            => [
@@ -85,6 +116,39 @@ class TestCase extends OrchestraTestCase
                 ],
             ],
         ]);
+    }
+    
+    protected function loginToken()
+    {
+        $dataLogin = ['username' => 'admin', 'password' => '123456', 'email' => 'admin@test.com'];
 
+        factory(User::class)->create($dataLogin);
+
+        $login = $this->json('POST', 'api/login', $dataLogin);
+
+        return $login->Json()['token'];
+    }
+
+    protected function assertResponsePagiated($response) {
+        $response->assertJsonStructure([
+            'meta' => [
+                'pagination' => [
+                    'total', 'count', 'per_page', 'current_page', 'total_pages', 'links' => [],
+                ],
+            ],
+        ]);
+    }
+
+    protected function assertValidator($response, $field, $error_message)
+    {
+        $response->assertStatus(422);
+        $response->assertJson([
+            'message' => "The given data was invalid.",
+            "errors" => [
+                $field => [
+                    $error_message,
+                ],
+            ],
+        ]);
     }
 }
