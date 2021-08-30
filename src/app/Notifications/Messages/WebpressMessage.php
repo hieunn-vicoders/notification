@@ -6,6 +6,8 @@ class WebpressMessage
 {
     private $toAddress;
 
+    private $toAddresses;
+
     private $fromAddress;
 
     private $fromName;
@@ -19,6 +21,12 @@ class WebpressMessage
     public function to($address)
     {
         $this->toAddress = $address;
+        return $this;
+    }
+    
+    public function toMany($addresses)
+    {
+        $this->toAddresses = $addresses;
         return $this;
     }
 
@@ -57,6 +65,7 @@ class WebpressMessage
     {
         return [
             'to'            => $this->toAddress,
+            'to_many'       => $this->toAddresses,
             'from_address'  => $this->fromAddress,
             'from_name'     => $this->fromName,
             'subject'       => $this->subjectContent,
