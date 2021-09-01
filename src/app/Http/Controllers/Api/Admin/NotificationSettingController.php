@@ -57,7 +57,7 @@ class NotificationSettingController extends ApiController {
             $transformer = new $this->transformer;
         }
 
-        $notification_settings = $this->entity->where('notificationable_id', $role_id)->where('type', $this->entity::TYPE_ROLE)->with('notification')->get();
+        $notification_settings = $this->entity->where('notificationable_id', $role_id)->where('notificationable_type', $this->entity::TYPE_ROLE)->with('notification')->get();
 
         return $this->response->collection($notification_settings, $transformer);
     }
@@ -78,7 +78,7 @@ class NotificationSettingController extends ApiController {
 
         $notification_setting_datas = $this->formatNotificationSettingData($request, collect($notification_ids));
 
-        $this->entity->where('notificationable_id', $request->role_id)->whereIn('notification_ids', $notification_ids)->where('type', $this->entity::TYPE_ROLE)->delete();
+        $this->entity->where('notificationable_id', $request->role_id)->whereIn('notification_ids', $notification_ids)->where('notificationable_type', $this->entity::TYPE_ROLE)->delete();
 
         $this->entity->insert($notification_setting_datas);
 
@@ -104,7 +104,7 @@ class NotificationSettingController extends ApiController {
                 'email_enable'          => in_array($notification_id, $email_template_ids)? $this->entity::ENABLE : $this->entity::DISABLE, 
                 'mobile_enable'         => in_array($notification_id, $mobile_template_ids)? $this->entity::ENABLE : $this->entity::DISABLE, 
                 'web_enable'            => in_array($notification_id, $web_template_ids)? $this->entity::ENABLE : $this->entity::DISABLE,
-                'type'                  => $this->entity::TYPE_ROLE, 
+                'notificationable_type'                  => $this->entity::TYPE_ROLE, 
             ];
         })->toArray();
 

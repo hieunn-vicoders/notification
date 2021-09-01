@@ -3,12 +3,12 @@
 namespace VCComponent\Laravel\Notification\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use VCComponent\Laravel\Notification\Entities\TemplateVariant;
+use VCComponent\Laravel\Notification\Entities\TemplateVariable;
 
-class TemplateVariantTransformer extends TransformerAbstract
+class TemplateVariableTransformer extends TransformerAbstract
 {
 
-    public function transform(TemplateVariant $model)
+    public function transform(TemplateVariable $model)
     {
         return [
             'id'         => (int) $model->id,

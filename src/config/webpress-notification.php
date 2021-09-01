@@ -6,7 +6,7 @@ return [
     'models' => [
         'notifcation' => \VCComponent\Laravel\Notification\Entities\Notification::class,
         'notifcation-setting' => \VCComponent\Laravel\Notification\Entities\NotificationSetting::class,
-        'notifcation-variant' => \VCComponent\Laravel\Notification\Entities\TemplateVariant::class,
+        'template-variable' => \VCComponent\Laravel\Notification\Entities\TemplateVariable::class,
     ],
 
     'base_url' => env('WEBPRESS_NOTIFICATION_BASE_URL', 'https://api.dev.webpress.vn/communication'),
@@ -29,7 +29,7 @@ return [
     ],
 
     'transformers' => [
-        'template-variant' => \VCComponent\Laravel\Notification\Transformers\TemplateVariantTransformer::class,
+        'template-variable' => \VCComponent\Laravel\Notification\Transformers\TemplateVariableTransformer::class,
         'notification' => \VCComponent\Laravel\Notification\Transformers\NotificationTransformer::class,
         'notification-setting' => \VCComponent\Laravel\Notification\Transformers\NotificationSettingTransformer::class
     ]

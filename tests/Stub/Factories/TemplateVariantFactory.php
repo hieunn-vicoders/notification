@@ -4,7 +4,7 @@
 
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use VCComponent\Laravel\Notification\Test\Stub\Entities\TemplateVariant;
+use VCComponent\Laravel\Notification\Test\Stub\Entities\TemplateVariable;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +17,7 @@ use VCComponent\Laravel\Notification\Test\Stub\Entities\TemplateVariant;
 |
 */
 
-$factory->define(TemplateVariant::class, function (Faker $faker) {
+$factory->define(TemplateVariable::class, function (Faker $faker) {
     return [
         'variable' => $faker->name,
         'notification_id' => rand(1, 9),

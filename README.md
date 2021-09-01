@@ -88,11 +88,11 @@ Here is the list of APIs provided by the package.
 | PUT    | `/api/{namespace}/admin/notifications/{id}`       | update a notification                |
 | DELETE | `/api/{namespace}/admin/notifications/{id}`       | delete a notification                |
 | ------ | ------                                            | ------                               |
-| GET    | `/api/{namespace}/admin/template-variants`        | get list template variants           |
-| GET    | `/api/{namespace}/admin/template-variants/{id}`   | get a template variant               |
-| POST   | `/api/{namespace}/admin/template-variants`        | create a template variant            |
-| PUT    | `/api/{namespace}/admin/template-variants/{id}`   | update a template variant            |
-| DELETE | `/api/{namespace}/admin/template-variants/{id}`   | delete a template variant            |
+| GET    | `/api/{namespace}/admin/template-variables`       | get list template variables          |
+| GET    | `/api/{namespace}/admin/template-variables/{id}`  | get a template variable              |
+| POST   | `/api/{namespace}/admin/template-variables`       | create a template variable           |
+| PUT    | `/api/{namespace}/admin/template-variables/{id}`  | update a template variable           |
+| DELETE | `/api/{namespace}/admin/template-variables/{id}`  | delete a template variable           |
 | ------ | ------                                            | ------                               |
 | GET    | `/api/{namespace}/admin/notification-setting/role/{role_id}`| get role notification settings|
-| PUT    | `/api/{namespace}/admin/notification-setting`     | update role template variant         |
+| PUT    | `/api/{namespace}/admin/notification-setting`     | update role template variable        |

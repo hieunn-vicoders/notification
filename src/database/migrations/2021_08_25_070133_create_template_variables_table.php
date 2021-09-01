@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTemplateVariantsTable extends Migration
+class CreateTemplateVariablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTemplateVariantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('template_variants', function (Blueprint $table) {
+        Schema::create('template_variables', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('variable');
             $table->unsignedBigInteger('notification_id');
@@ -30,6 +30,6 @@ class CreateTemplateVariantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('template_variants');
+        Schema::dropIfExists('template_variables');
     }
 }

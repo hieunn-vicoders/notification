@@ -26,12 +26,12 @@ class NotificationSettingTransformer extends TransformerAbstract
             'email_enable'          => $model->email_enable,
             'mobile_enable'         => $model->mobile_enable,
             'web_enable'            => $model->web_enable,
-            'type'                  => $model->type
+            'notificationable_type' => $model->notificationable_type
         ];
     }
 
     
-    public function includeTemplateVariant(Notification $model) {
-        return $this->collection($model->notification, new TemplateVariantTransformer);
+    public function includeTemplateVariable(Notification $model) {
+        return $this->collection($model->notification, new TemplateVariableTransformer);
     }
 }

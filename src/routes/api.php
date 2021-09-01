@@ -13,7 +13,7 @@ $api->version('v1', function ($api) {
             $api->put("notification-setting/sync", "VCComponent\Laravel\Notification\Http\Controllers\Api\Admin\NotificationSettingController@syncSetting");
             
             $api->resource("notifications", "VCComponent\Laravel\Notification\Http\Controllers\Api\Admin\NotificationController");
-            $api->resource("template-variants", "VCComponent\Laravel\Notification\Http\Controllers\Api\Admin\TemplateVariantController");
+            $api->resource("template-variables", "VCComponent\Laravel\Notification\Http\Controllers\Api\Admin\TemplateVariableController");
         });
     });
 });

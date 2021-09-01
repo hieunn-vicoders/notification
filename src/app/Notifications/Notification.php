@@ -12,7 +12,7 @@ class Notification extends BaseNotification
     use Queueable;
 
     public $notification;
-    public $template_variants;
+    public $template_variables;
     public $to_addresses;
 
     /**
@@ -20,10 +20,10 @@ class Notification extends BaseNotification
      *
      * @return void
      */
-    public function __construct($notification, array $template_variants = null, array $to_addresses)
+    public function __construct($notification, array $template_variables = null, array $to_addresses)
     {
         $this->notification = $notification;
-        $this->template_variants = $template_variants;
+        $this->template_variables = $template_variables;
         $this->to_addresses = $to_addresses;
     }
 
@@ -61,7 +61,7 @@ class Notification extends BaseNotification
             ->mergeFields([
                 [
                     'name'    => 'HTML_CONTENT',
-                    'content' => $this->mergeContentVariants($this->notification->email_template),
+                    'content' => $this->mergeContentVariables($this->notification->email_template),
                 ],
             ]);
     }
@@ -69,12 +69,12 @@ class Notification extends BaseNotification
     /**
      * 
      */
-    protected function mergeContentVariants($notification_content)
+    protected function mergeContentVariables($notification_content)
     {
         $search = [];
         $replace = [];
 
-        foreach ($this->template_variants as $key => $value) {
+        foreach ($this->template_variables as $key => $value) {
             $key = '*|' . $key . '|*';
             $search = array_merge($search, $key);
             $replace = array_merge($replace, [$key => $value]);

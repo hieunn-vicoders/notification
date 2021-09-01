@@ -20,7 +20,7 @@ class CreateNotificationSettingsTable extends Migration
             $table->tinyInteger('email_enable');
             $table->tinyInteger('mobile_enable');
             $table->tinyInteger('web_enable');
-            $table->string('type');
+            $table->string('notificationable_type');
 
             $table->foreign('notification_id')->references('id')->on('notifications');
         });

@@ -64,7 +64,7 @@ class TestCase extends OrchestraTestCase
             'models' => [
                 'notifcation' => \VCComponent\Laravel\Notification\Entities\Notification::class,
                 'notifcation-setting' => \VCComponent\Laravel\Notification\Entities\NotificationSetting::class,
-                'notifcation-variant' => \VCComponent\Laravel\Notification\Entities\TemplateVariant::class,
+                'template-variable' => \VCComponent\Laravel\Notification\Entities\TemplateVariable::class,
             ],
 
             'base_url' => env('WEBPRESS_NOTIFICATION_BASE_URL', 'https://api.dev.webpress.vn/communication'),

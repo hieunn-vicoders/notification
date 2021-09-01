@@ -8,7 +8,7 @@ use VCComponent\Laravel\Notification\Entities\Notification;
 class NotificationTransformer extends TransformerAbstract
 {
     protected $availableIncludes = [
-        'templateVariant'
+        'templateVariable'
     ];
 
     public function __construct($includes = [])
@@ -32,7 +32,7 @@ class NotificationTransformer extends TransformerAbstract
         ];
     }
 
-    public function includeTemplateVariant(Notification $model) {
-        return $this->collection($model->templateVariants, new TemplateVariantTransformer);
+    public function includeTemplateVariable(Notification $model) {
+        return $this->collection($model->templateVariables, new TemplateVariableTransformer);
     }
 }

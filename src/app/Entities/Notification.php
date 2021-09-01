@@ -25,7 +25,7 @@ class Notification extends Model implements Transformable
         'web_template',
     ];
 
-    public function templateVariants() {
-        return $this->hasMany(TemplateVariant::class);
+    public function templateVariables() {
+        return $this->hasMany(TemplateVariable::class);
     }
 }

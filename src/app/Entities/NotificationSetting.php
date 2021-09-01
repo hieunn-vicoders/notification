@@ -32,7 +32,7 @@ class NotificationSetting extends Model implements Transformable
         'email_enable',
         'mobile_enable',
         'web_enable',
-        'type'
+        'notificationable_type'
     ];
 
     public function notification() {
@@ -56,8 +56,8 @@ class NotificationSetting extends Model implements Transformable
                 sum(email_enable) as email_enable,
                 sum(mobile_enable) as mobile_enable,
                 sum(web_enable) as web_enable,
-                type
-            ")->whereIn('notificationable_id', $role_ids)->where('type', static::TYPE_ROLE)->groupBy('notification_id')->with('notification')->orderBy('id', 'DESC')->get();
+                notificationable_type
+            ")->whereIn('notificationable_id', $role_ids)->where('notificationable_type', static::TYPE_ROLE)->groupBy('notification_id')->with('notification')->orderBy('id', 'DESC')->get();
     }
 
     /**
@@ -68,6 +68,6 @@ class NotificationSetting extends Model implements Transformable
      * @return \Illuminate\Support\Collection
      */
     public function getUserSetting($user_id) {
-        return $this->where('notificationable_id', $user_id)->where('type', static::TYPE_USER)->with('notification')->get();
+        return $this->where('notificationable_id', $user_id)->where('notificationable_type', static::TYPE_USER)->with('notification')->get();
     }
 }

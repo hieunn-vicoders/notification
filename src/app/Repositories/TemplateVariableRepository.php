@@ -7,7 +7,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 /**
  * Interface Repository.
  */
-interface TemplateVariantRepository extends RepositoryInterface
+interface TemplateVariableRepository extends RepositoryInterface
 {
     //
 }

@@ -21,7 +21,7 @@ class NotificationSettingControllerTest extends TestCase
         $role_id = factory(Role::class)->create()->id;
 
         $notification_settings = factory(NotificationSetting::class, 5)->create([
-            'type' => 'roles',
+            'notificationable_type' => 'roles',
             'notificationable_id' => $role_id,
         ]);
         
@@ -71,7 +71,7 @@ class NotificationSettingControllerTest extends TestCase
                 if ($web_enable) array_push($web_enable_array, $notification->id);
     
                 return factory(NotificationSetting::class)->make([
-                    'type' => 'roles',
+                    'notificationable_type' => 'roles',
                     'notificationable_id' => $role_id,
                     'notification_id' => $notification->id,
                     'email_enable' => $email_enable,

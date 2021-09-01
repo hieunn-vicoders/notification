@@ -49,7 +49,7 @@ class WebpressNotificationSendingListener
         $query = $this->notificatoin_setting_entity
                 ->whereIn('notificationable_id', $user_ids)
                 ->where('notification_id', $notification->id)
-                ->where('type', $this->notificatoin_setting_entity::TYPE_USER);
+                ->where('notificationable_type', $this->notificatoin_setting_entity::TYPE_USER);
         if ($event->channel == WebpressChannel::class) {
             $query = $query->where('email_enable', 1);
         }

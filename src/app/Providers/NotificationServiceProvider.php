@@ -7,8 +7,8 @@ use VCComponent\Laravel\Notification\Repositories\NotificationRepository;
 use VCComponent\Laravel\Notification\Repositories\NotificationRepositoryEloquent;
 use VCComponent\Laravel\Notification\Repositories\NotificationSettingRepository;
 use VCComponent\Laravel\Notification\Repositories\NotificationSettingRepositoryEloquent;
-use VCComponent\Laravel\Notification\Repositories\TemplateVariantRepository;
-use VCComponent\Laravel\Notification\Repositories\TemplateVariantRepositoryEloquent;
+use VCComponent\Laravel\Notification\Repositories\TemplateVariableRepository;
+use VCComponent\Laravel\Notification\Repositories\TemplateVariableRepositoryEloquent;
 
 class NotificationServiceProvider extends ServiceProvider
 {
@@ -36,7 +36,7 @@ class NotificationServiceProvider extends ServiceProvider
     {
         $this->app->bind(NotificationRepository::class, NotificationRepositoryEloquent::class);
         $this->app->bind(NotificationSettingRepository::class, NotificationSettingRepositoryEloquent::class);
-        $this->app->bind(TemplateVariantRepository::class, TemplateVariantRepositoryEloquent::class);
+        $this->app->bind(TemplateVariableRepository::class, TemplateVariableRepositoryEloquent::class);
         $this->app->register(NotificationEventServiceProvider::class);
     }
 }

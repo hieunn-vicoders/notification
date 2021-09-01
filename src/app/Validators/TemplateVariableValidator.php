@@ -5,7 +5,7 @@ namespace VCComponent\Laravel\Notification\Validators;
 use VCComponent\Laravel\Vicoders\Core\Validators\AbstractValidator;
 use VCComponent\Laravel\Vicoders\Core\Validators\ValidatorInterface;
 
-class TemplateVariantValidator extends AbstractValidator
+class TemplateVariableValidator extends AbstractValidator
 {
     protected $rules = [
         ValidatorInterface::RULE_ADMIN_CREATE => [

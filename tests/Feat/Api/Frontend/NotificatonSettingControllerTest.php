@@ -22,7 +22,7 @@ class NotificationSettingControllerTest extends TestCase
         $token = JWTAuth::fromUser($user);
 
         $notification_settings = factory(NotificationSetting::class, 5)->create([
-            'type' => 'users',
+            'notificationable_type' => 'users',
             'notificationable_id' => $user->id,
         ])->toArray();
 
@@ -43,7 +43,7 @@ class NotificationSettingControllerTest extends TestCase
         $token = JWTAuth::fromUser($user);
 
         $notification_settings = factory(NotificationSetting::class, 2)->create([
-            'type' => 'roles',
+            'notificationable_type' => 'roles',
             'notificationable_id' => $roles[1]->id,
         ])->toArray();
 
@@ -80,7 +80,7 @@ class NotificationSettingControllerTest extends TestCase
                 if ($web_enable) array_push($web_enable_array, $notification->id);
     
                 return factory(NotificationSetting::class)->make([
-                    'type' => 'users',
+                    'notificationable_type' => 'users',
                     'notificationable_id' => $role->id,
                     'notification_id' => $notification->id,
                     'email_enable' => $email_enable,

@@ -4,12 +4,12 @@ namespace VCComponent\Laravel\Notification\Repositories;
 
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
-use VCComponent\Laravel\Notification\Entities\TemplateVariant;
+use VCComponent\Laravel\Notification\Entities\TemplateVariable;
 use VCComponent\Laravel\Vicoders\Core\Exceptions\NotFoundException;
 /**
  * Class AccountantRepositoryEloquent.
  */
-class TemplateVariantRepositoryEloquent extends BaseRepository implements TemplateVariantRepository
+class TemplateVariableRepositoryEloquent extends BaseRepository implements TemplateVariableRepository
 {
     /**
      * Specify Model class name
@@ -18,10 +18,10 @@ class TemplateVariantRepositoryEloquent extends BaseRepository implements Templa
      */
     public function model()
     {
-        if (config('webpress-notification.models.template-variant')) {
-            return config('webpress-notification.models.template-variant');
+        if (config('webpress-notification.models.template-variable')) {
+            return config('webpress-notification.models.template-variable');
         }
-        return TemplateVariant::class;
+        return TemplateVariable::class;
     }
 
     public function getEntity()
@@ -39,10 +39,10 @@ class TemplateVariantRepositoryEloquent extends BaseRepository implements Templa
 
     public function findById($id)
     {
-        $template_variant = $this->model->find($id);
-        if (!$template_variant) {
-            throw new NotFoundException('Template variant');
+        $template_variable = $this->model->find($id);
+        if (!$template_variable) {
+            throw new NotFoundException('Template variable');
         }
-        return $template_variant;
+        return $template_variable;
     }
 }
