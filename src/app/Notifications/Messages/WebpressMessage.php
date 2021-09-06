@@ -6,7 +6,7 @@ class WebpressMessage
 {
     private $toAddress;
 
-    private $toAddresses;
+    private $toAddresses = [];
 
     private $fromAddress;
 
