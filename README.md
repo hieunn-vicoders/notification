@@ -8,6 +8,7 @@ Notification channel for laravel webpress core
   - [Environment](#environment)
   - [Notification Channels](#notification-channels)
     - [Webpress notification channel](#webpress-notification-channel)
+  - [APIs List](#apis-list)
 
 ## Installation
 
@@ -70,3 +71,28 @@ public function toWebpress($notifiable)
         ]);
 }
 ```
+
+# APIs List
+
+Here is the list of APIs provided by the package.
+
+| Verb   | URI                                               | Action                               |
+| ------ | ------------------------------------------------- | ------------------------------------ |
+| GET    | `/api/{namespace}/notification-setting/configable`| get configable notifications of user |
+| GET    | `/api/{namespace}/notification-setting`           | get user notification settings       |
+| PUT    | `/api/{namespace}/notification-setting/sync`      | update user notification settings    |
+| ------ | ------                                            | ------                               |
+| GET    | `/api/{namespace}/admin/notifications`            | get list notifications               |
+| GET    | `/api/{namespace}/admin/notifications/{id}`       | get a notification                   |
+| POST   | `/api/{namespace}/admin/notifications`            | create a notification                |
+| PUT    | `/api/{namespace}/admin/notifications/{id}`       | update a notification                |
+| DELETE | `/api/{namespace}/admin/notifications/{id}`       | delete a notification                |
+| ------ | ------                                            | ------                               |
+| GET    | `/api/{namespace}/admin/template-variables`       | get list template variables          |
+| GET    | `/api/{namespace}/admin/template-variables/{id}`  | get a template variable              |
+| POST   | `/api/{namespace}/admin/template-variables`       | create a template variable           |
+| PUT    | `/api/{namespace}/admin/template-variables/{id}`  | update a template variable           |
+| DELETE | `/api/{namespace}/admin/template-variables/{id}`  | delete a template variable           |
+| ------ | ------                                            | ------                               |
+| GET    | `/api/{namespace}/admin/notification-setting/role/{role_id}`| get role notification settings|
+| PUT    | `/api/{namespace}/admin/notification-setting`     | update role template variable        |
