@@ -78,7 +78,7 @@ class NotificationSettingController extends ApiController {
 
         $notification_setting_datas = $this->formatNotificationSettingData($request, collect($notification_ids));
 
-        $this->entity->where('notificationable_id', $request->role_id)->whereIn('notification_ids', $notification_ids)->where('notificationable_type', $this->entity::TYPE_ROLE)->delete();
+        $this->entity->where('notificationable_id', $request->role_id)->whereIn('notification_id', $notification_ids)->where('notificationable_type', $this->entity::TYPE_ROLE)->delete();
 
         $this->entity->insert($notification_setting_datas);
 
