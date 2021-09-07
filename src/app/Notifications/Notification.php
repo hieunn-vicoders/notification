@@ -76,7 +76,7 @@ class Notification extends BaseNotification
 
         foreach ($this->template_variables as $key => $value) {
             $key = '*|' . $key . '|*';
-            $search = array_merge($search, $key);
+            array_push($search, $key);
             $replace = array_merge($replace, [$key => $value]);
         }
 

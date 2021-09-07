@@ -4,6 +4,7 @@ namespace VCComponent\Laravel\Notification\Listeners;
 
 use Illuminate\Notifications\Events\NotificationSending;
 use VCComponent\Laravel\Notification\Entities\Notification;
+use VCComponent\Laravel\Notification\Notifications\Channels\MobileChannel;
 use VCComponent\Laravel\Notification\Notifications\Channels\WebpressChannel;
 use VCComponent\Laravel\Notification\Notifications\Notification as NotificationsNotification;
 use VCComponent\Laravel\Notification\Repositories\NotificationSettingRepository;
@@ -54,7 +55,7 @@ class WebpressNotificationSendingListener
             if ($event->channel == WebpressChannel::class) {
                 $query = $query->where('email_enable', 1);
             }
-            $notificationable_ids = $query->get()->pluck('id')->toArray();
+            $notificationable_ids = $query->get()->pluck('notificationable_id')->toArray();
             
             $to_addresses = $users->filter(function ($user) use ($notificationable_ids) {
                 return in_array($user->id, $notificationable_ids);
@@ -63,7 +64,7 @@ class WebpressNotificationSendingListener
             if (!count($to_addresses)) {
                 return false;
             }
-    
+
             $class_notification->to_addresses = $to_addresses;
         }
         return true;
