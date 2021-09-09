@@ -4,12 +4,9 @@ namespace VCComponent\Laravel\Notification\Test;
 
 use Cviebrock\EloquentSluggable\ServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider;
-use NF\Roles\RolesServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use VCComponent\Laravel\Notification\Providers\NotificationServiceProvider;
 use VCComponent\Laravel\Notification\Test\Stub\Entities\User;
-use VCComponent\Laravel\User\Providers\UserComponentProvider;
-use VCComponent\Laravel\User\Providers\UserComponentRouteProvider;
 
 class TestCase extends OrchestraTestCase
 {
@@ -27,10 +24,7 @@ class TestCase extends OrchestraTestCase
             NotificationServiceProvider::class,
             ServiceProvider::class,
             \Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
-            \Illuminate\Auth\AuthServiceProvider::class,
-            UserComponentProvider::class,
-            UserComponentRouteProvider::class,
-            RolesServiceProvider::class,
+            \Illuminate\Auth\AuthServiceProvider::class
         ];
     }
 
@@ -41,6 +35,7 @@ class TestCase extends OrchestraTestCase
     {
         parent::setUp();
         $this->withFactories(__DIR__ . '/Stub/Factories');
+        $this->loadMigrationsFrom(__DIR__ . '/Stub/migrations');
     }
 
     /**
@@ -117,19 +112,9 @@ class TestCase extends OrchestraTestCase
             ],
         ]);
     }
-    
-    protected function loginToken()
+
+    protected function assertResponsePagiated($response)
     {
-        $dataLogin = ['username' => 'admin', 'password' => '123456', 'email' => 'admin@test.com'];
-
-        factory(User::class)->create($dataLogin);
-
-        $login = $this->json('POST', 'api/login', $dataLogin);
-
-        return $login->Json()['token'];
-    }
-
-    protected function assertResponsePagiated($response) {
         $response->assertJsonStructure([
             'meta' => [
                 'pagination' => [

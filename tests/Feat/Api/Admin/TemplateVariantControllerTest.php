@@ -3,7 +3,9 @@
 namespace VCComponent\Laravel\Notification\Test\Feat\Api\Admin;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use VCComponent\Laravel\Notification\Test\Stub\Entities\TemplateVariable;
+use VCComponent\Laravel\Notification\Test\Stub\Entities\User;
 use VCComponent\Laravel\Notification\Test\TestCase;
 
 class TemplateVariableControllerTest extends TestCase
@@ -14,7 +16,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function can_get_list_all_template_variables_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $template_variables = factory(TemplateVariable::class, 5)->create();
 
         $template_variables = $template_variables->map(function ($template_variable) {
@@ -35,7 +38,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function can_get_list_all_template_variables_with_constraints_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $template_variables = factory(TemplateVariable::class, 5)->create();
         $variable_constraints = $template_variables[0]->variable;
         $constraints = '{"variable":"' . $variable_constraints . '"}';
@@ -58,7 +62,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function can_get_list_all_template_variables_with_search_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $template_variables = factory(TemplateVariable::class, 5)->create();
         $search = $template_variables[0]->variable;
 
@@ -82,7 +87,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function can_get_list_all_template_variables_with_order_by_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $template_variables = factory(TemplateVariable::class, 4)->create();
 
         $template_variables = $template_variables->map(function ($template_variable) {
@@ -106,7 +112,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function can_get_list_template_variables_with_paginate_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $template_variables = factory(TemplateVariable::class, 4)->create();
 
         $template_variables = $template_variables->map(function ($template_variable) {
@@ -129,7 +136,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function can_get_a_template_variable_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $template_variable = factory(TemplateVariable::class)->create()->toArray();
 
         unset($template_variable['created_at']);
@@ -144,7 +152,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function should_not_get_an_undefined_template_variable_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $response = $this->withHeader('Authorization', 'Bearer ' . $token)->json('GET', 'api/admin/template-variables/1');
 
@@ -155,7 +164,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function can_create_a_template_variable_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $data = factory(TemplateVariable::class)->make()->toArray();
 
@@ -168,7 +178,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function should_not_create_a_template_variable_without_variable_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $data = factory(TemplateVariable::class)->make(['variable' => null])->toArray();
 
@@ -180,7 +191,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function should_not_create_a_template_variable_without_notification_id_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $data = factory(TemplateVariable::class)->make(['notification_id' => null])->toArray();
 
@@ -192,7 +204,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function can_update_a_template_variable_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $template_variable = factory(TemplateVariable::class)->create();
 
@@ -207,7 +220,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function should_not_update_undefine_template_variable_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $data = factory(TemplateVariable::class)->make()->toArray();
 
@@ -220,7 +234,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function should_not_update_template_variable_with_null_variable_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $template_variable = factory(TemplateVariable::class)->create();
 
@@ -234,7 +249,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function should_not_update_template_variable_with_null_notification_id_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $template_variable = factory(TemplateVariable::class)->create();
 
@@ -248,7 +264,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function can_delete_a_template_variable_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $template_variable = factory(TemplateVariable::class)->create()->toArray();
 
@@ -262,7 +279,8 @@ class TemplateVariableControllerTest extends TestCase
     /** @test */
     public function should_not_delete_an_undefine_template_variable_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $response = $this->withHeader('Authorization', 'Bearer ' . $token)->json('DELETE', 'api/admin/template-variables/1');
 

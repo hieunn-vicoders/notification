@@ -3,7 +3,9 @@
 namespace VCComponent\Laravel\Notification\Test\Feat\Api\Admin;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use VCComponent\Laravel\Notification\Test\Stub\Entities\Notification;
+use VCComponent\Laravel\Notification\Test\Stub\Entities\User;
 use VCComponent\Laravel\Notification\Test\TestCase;
 
 class NotificationControllerTest extends TestCase
@@ -14,7 +16,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function can_get_list_all_notifications_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $notifications = factory(Notification::class, 5)->create();
 
         $notifications = $notifications->map(function ($notification) {
@@ -35,7 +38,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function can_get_list_all_notifications_with_constraints_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $notifications = factory(Notification::class, 5)->create();
         $name_constraints = $notifications[0]->name;
         $constraints = '{"name":"' . $name_constraints . '"}';
@@ -58,7 +62,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function can_get_list_all_notifications_with_search_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $notifications = factory(Notification::class, 5)->create();
         $search = $notifications[0]->name;
 
@@ -82,7 +87,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function can_get_list_all_notifications_with_order_by_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $notifications = factory(Notification::class, 4)->create();
 
         $notifications = $notifications->map(function ($notification) {
@@ -106,7 +112,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function can_get_list_notifications_with_paginate_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $notifications = factory(Notification::class, 4)->create();
 
         $notifications = $notifications->map(function ($notification) {
@@ -129,7 +136,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function can_get_a_notification_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
         $notification = factory(Notification::class)->create()->toArray();
 
         unset($notification['created_at']);
@@ -144,7 +152,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function should_not_get_an_undefined_notification_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $response = $this->withHeader('Authorization', 'Bearer ' . $token)->json('GET', 'api/admin/notifications/1');
 
@@ -155,7 +164,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function can_create_a_notification_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $data = factory(Notification::class)->make()->toArray();
 
@@ -168,7 +178,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function should_not_create_a_notification_without_name_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $data = factory(Notification::class)->make(['name' => null])->toArray();
 
@@ -180,7 +191,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function should_not_create_a_notification_with_duplicated_slug_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         factory(Notification::class)->create(['slug' => 'existed_slug']);
 
@@ -194,7 +206,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function can_update_a_notification_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $notification = factory(Notification::class)->create();
 
@@ -209,7 +222,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function should_not_update_undefine_notification_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $data = factory(Notification::class)->make()->toArray();
 
@@ -222,7 +236,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function should_not_update_notification_with_null_name_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $notification = factory(Notification::class)->create();
 
@@ -236,7 +251,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function should_not_update_notification_with_null_slug_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $notification = factory(Notification::class)->create();
 
@@ -250,7 +266,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function should_not_update_notification_with_duplicated_slug_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $notifications = factory(Notification::class, 2)->create();
 
@@ -264,7 +281,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function can_delete_a_notification_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $notification = factory(Notification::class)->create()->toArray();
 
@@ -278,7 +296,8 @@ class NotificationControllerTest extends TestCase
     /** @test */
     public function should_not_delete_an_undefine_notification_by_admin()
     {
-        $token = $this->loginToken();
+        $user = factory(User::class)->create();
+        $token = JWTAuth::fromUser($user);
 
         $response = $this->withHeader('Authorization', 'Bearer ' . $token)->json('DELETE', 'api/admin/notifications/1');
 
