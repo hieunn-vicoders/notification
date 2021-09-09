@@ -4,6 +4,7 @@ namespace VCComponent\Laravel\Notification\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification as BaseNotification;
+use Illuminate\Support\Collection;
 use VCComponent\Laravel\Notification\Notifications\Channels\WebpressChannel;
 use VCComponent\Laravel\Notification\Notifications\Messages\MobileMessage;
 use VCComponent\Laravel\Notification\Notifications\Messages\WebpressMessage;
@@ -14,18 +15,18 @@ class Notification extends BaseNotification
 
     public $notification;
     public $template_variables;
-    public $to_addresses;
+    public $to_users;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($notification, array $template_variables = null, array $to_addresses)
+    public function __construct($notification, array $template_variables = null, Collection $to_users)
     {
         $this->notification = $notification;
         $this->template_variables = $template_variables;
-        $this->to_addresses = $to_addresses;
+        $this->to_users = $to_users;
     }
 
     /**
@@ -56,7 +57,7 @@ class Notification extends BaseNotification
     {
         return (new WebpressMessage())
             ->to($notifiable->email)
-            ->toMany($this->to_addresses)
+            ->toMany($this->to_users)
             ->subject($this->notification->name)
             ->template('[vi] WEBPRESS 06 - blank template')
             ->mergeFields([

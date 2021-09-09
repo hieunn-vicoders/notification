@@ -56,19 +56,6 @@ class NotificationSettingController extends ApiController {
         return $this->response->collection($user_notification_settings, $transformer);
     }
 
-    public function getConfigableNotification(Request $request) 
-    {
-        $user_notification_settings = $this->entity->getUserConfigableNotifications($this->user->id);
-        
-        if ($request->has('includes')) {
-            $transformer = new $this->transformer(explode(',', $request->get('includes')));
-        } else {
-            $transformer = new $this->transformer;
-        }
-
-        return $this->response->collection($user_notification_settings, $transformer);
-    }
-
     public function syncSetting(Request $request) {
         $this->validator->isValid($request, "SYNC_USER_NOTIFICATION_SETTING");
 

@@ -2,14 +2,12 @@
 
 namespace VCComponent\Laravel\Notification\Listeners;
 
-use Illuminate\Notifications\Events\NotificationSending;
-use VCComponent\Laravel\Notification\Entities\Notification;
+use VCComponent\Laravel\Notification\Entities\Notification as EntitiesNotification;
 use VCComponent\Laravel\Notification\Notifications\Channels\MobileChannel;
 use VCComponent\Laravel\Notification\Notifications\Channels\WebpressChannel;
-use VCComponent\Laravel\Notification\Notifications\Notification as NotificationsNotification;
+use VCComponent\Laravel\Notification\Notifications\Notification;
 use VCComponent\Laravel\Notification\Repositories\NotificationSettingRepository;
 use VCComponent\Laravel\User\Entities\User;
-use VCComponent\Laravel\User\Events\UserRegisteredEvent;
 
 class WebpressNotificationSendingListener
 {
@@ -28,29 +26,22 @@ class WebpressNotificationSendingListener
         //
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  UserRegisteredEvent  $event
-     * @return void
-     */
-    public function handle(NotificationSending $event)
+    public function handle($event)
     {
-        $class_notification = $event->notification;
+        $notification = $event->notification;
 
-        if ($class_notification instanceof NotificationsNotification) {
-            $notification = $class_notification->notification;
-            if (!$notification instanceof Notification) {
+        if ($notification instanceof Notification) {
+            $model = $notification->notification;
+            if (!$model instanceof EntitiesNotification) {
                 return false;
             }
-            array_push($class_notification->to_addresses, $event->notifiable->email);
-            $users = User::whereIn('email', $class_notification->to_addresses)->get();
+            $users = $notification->to_users;
     
             $user_ids = $users->pluck('id')->toArray();
-    
+            array_push($user_ids, $event->notifiable->id);
             $query = $this->notificatoin_setting_entity
                     ->whereIn('notificationable_id', $user_ids)
-                    ->where('notification_id', $notification->id)
+                    ->where('notification_id', $model->id)
                     ->where('notificationable_type', $this->notificatoin_setting_entity::TYPE_USER);
             if ($event->channel == WebpressChannel::class) {
                 $query = $query->where('email_enable', 1);
@@ -60,15 +51,15 @@ class WebpressNotificationSendingListener
             }
             $notificationable_ids = $query->get()->pluck('notificationable_id')->toArray();
             
-            $to_addresses = $users->filter(function ($user) use ($notificationable_ids) {
+            $to_users = $users->filter(function ($user) use ($notificationable_ids) {
                 return in_array($user->id, $notificationable_ids);
             })->pluck('email')->toArray();
     
-            if (!count($to_addresses)) {
+            if (!count($to_users)) {
                 return false;
             }
 
-            $class_notification->to_addresses = $to_addresses;
+            $notification->to_users = $to_users;
         }
         return true;
     }

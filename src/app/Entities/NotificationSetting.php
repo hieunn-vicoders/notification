@@ -3,10 +3,8 @@
 namespace VCComponent\Laravel\Notification\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use NF\Roles\Models\Role;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
-use VCComponent\Laravel\User\Entities\UserHasRole;
 
 class NotificationSetting extends Model implements Transformable
 {
@@ -37,27 +35,6 @@ class NotificationSetting extends Model implements Transformable
 
     public function notification() {
         return $this->belongsTo(Notification::class, 'notification_id', 'id');
-    }
-
-    /**
-     * Lấy danh sách thông báo user có thể setting
-     * 
-     * @param integer $user_id
-     * 
-     * @return \Illuminate\Support\Collection
-     */
-    public function getUserConfigableNotifications($user_id) {
-        $role_ids = UserHasRole::where('user_id', $user_id)->get()->pluck('role_id')->toArray();
-
-        return $this->selectRaw("
-                id, 
-                notification_id, 
-                notificationable_id,
-                sum(email_enable) as email_enable,
-                sum(mobile_enable) as mobile_enable,
-                sum(web_enable) as web_enable,
-                notificationable_type
-            ")->whereIn('notificationable_id', $role_ids)->where('notificationable_type', static::TYPE_ROLE)->groupBy('notification_id')->with('notification')->orderBy('id', 'DESC')->get();
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace VCComponent\Laravel\Notification\Listeners;
 
 use VCComponent\Laravel\Notification\Notifications\MailRegister;
-use VCComponent\Laravel\User\Events\UserRegisteredEvent;
 
 class UserRegisteredListener
 {
@@ -17,13 +16,7 @@ class UserRegisteredListener
         //
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  UserRegisteredEvent  $event
-     * @return void
-     */
-    public function handle(UserRegisteredEvent $event)
+    public function handle($event)
     {
         $user = $event->user;
         $user->notify(new MailRegister(

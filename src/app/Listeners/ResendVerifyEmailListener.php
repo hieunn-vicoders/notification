@@ -2,9 +2,7 @@
 
 namespace VCComponent\Laravel\Notification\Listeners;
 
-use VCComponent\Laravel\Notification\Notifications\MailRegister;
 use VCComponent\Laravel\Notification\Notifications\MailResendVerify;
-use VCComponent\Laravel\User\Events\ResendVerifyEmailEvent;
 
 class ResendVerifyEmailListener
 {
@@ -18,13 +16,7 @@ class ResendVerifyEmailListener
         //
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  ResendVerifyEmailEvent  $event
-     * @return void
-     */
-    public function handle(ResendVerifyEmailEvent $event)
+    public function handle($event)
     {
         $user = $event->user;
         $user->notify(new MailResendVerify(

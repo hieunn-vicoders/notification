@@ -3,7 +3,6 @@
 namespace VCComponent\Laravel\Notification\Listeners;
 
 use VCComponent\Laravel\Notification\Notifications\MailResetPasswordToken;
-use VCComponent\Laravel\User\Events\AdminResendPasswordEvent;
 
 class AdminResendPasswordListener
 {
@@ -17,13 +16,7 @@ class AdminResendPasswordListener
         //
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  AdminResendPasswordEvent  $event
-     * @return void
-     */
-    public function handle(AdminResendPasswordEvent $event)
+    public function handle($event)
     {
         $reset_password_url = request()->get('reset_password_url');
         $user = $event->user;
