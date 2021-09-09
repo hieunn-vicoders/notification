@@ -13,6 +13,11 @@ return [
 
     'version'  => env('WEBPRESS_NOTIFICATION_VERSION', 'v1.0'),
 
+    'mobile-notification' => [
+        'base_url' => 'https://api.dev.webpress.vn/notification',
+        'version'  => env('WEBPRESS_NOTIFICATION_VERSION', 'v1.0'),
+    ],
+
     'auth_middleware' => [
         'admin'    => [
             [

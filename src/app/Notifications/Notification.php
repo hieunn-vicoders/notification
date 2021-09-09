@@ -5,6 +5,7 @@ namespace VCComponent\Laravel\Notification\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification as BaseNotification;
 use VCComponent\Laravel\Notification\Notifications\Channels\WebpressChannel;
+use VCComponent\Laravel\Notification\Notifications\Messages\MobileMessage;
 use VCComponent\Laravel\Notification\Notifications\Messages\WebpressMessage;
 
 class Notification extends BaseNotification
@@ -64,6 +65,16 @@ class Notification extends BaseNotification
                     'content' => $this->mergeContentVariables($this->notification->email_template),
                 ],
             ]);
+    }
+
+    public function toMobile($notifiable)
+    {
+        return (new MobileMessage())
+            ->to($notifiable->id)
+            ->header($this->notification->name)
+            ->content($this->notification->mobile_template)
+            ->url('')
+            ->data([]);
     }
 
     /**

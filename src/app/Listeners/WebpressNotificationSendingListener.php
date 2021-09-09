@@ -55,6 +55,9 @@ class WebpressNotificationSendingListener
             if ($event->channel == WebpressChannel::class) {
                 $query = $query->where('email_enable', 1);
             }
+            if ($event->channel == MobileChannel::class) {
+                $query = $query->where('mobile_enable', 1);
+            }
             $notificationable_ids = $query->get()->pluck('notificationable_id')->toArray();
             
             $to_addresses = $users->filter(function ($user) use ($notificationable_ids) {

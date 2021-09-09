@@ -38,7 +38,7 @@ class NotificationTableSeeder extends Seeder
                                             <tr>
                                                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                                                     <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
-                                                        Người dùng *|USERNAME|* yêu cầu đổi mật khẩu.
+                                                        Người dùng yêu cầu đổi mật khẩu.
                                                     </div>
                                                 </td>
                                             </tr>
@@ -72,7 +72,7 @@ class NotificationTableSeeder extends Seeder
                                             <tr>
                                                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                                                     <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
-                                                        Người dùng *|USERNAME|* vừa tạo mới tài khoản.
+                                                        Người dùng tạo mới tài khoản.
                                                     </div>
                                                 </td>
                                             </tr>
@@ -106,7 +106,7 @@ class NotificationTableSeeder extends Seeder
                                             <tr>
                                                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                                                     <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
-                                                        Tài khoản *|ADMIN_ACCOUNT|* vừa tạo yêu cầu đặt lại mật khẩu cho người dùng.
+                                                        Admin vừa tạo yêu cầu đặt lại mật khẩu cho người dùng.
                                                     </div>
                                                 </td>
                                             </tr>
@@ -140,75 +140,7 @@ class NotificationTableSeeder extends Seeder
                                             <tr>
                                                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                                                     <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
-                                                        Tài khoản *|ADMIN_ACCOUNT|* vừa tạo mới mới bài viết.
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>',
-                'mobile_template' => '',
-                'web_template'  => ''
-            ],
-            [
-                'name' => 'Thông báo có admin vừa cập nhật bài viết',
-                'slug' => 'thong-bao-co-admin-vua-cap-nhat-bai-viet',
-                'email_template' => '<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                                        <tbody>
-                                            <tr>
-                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="width:250px;">
-                                                                    <img alt="logo" height="auto" src="*|LOGO_URL|*" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:14px;" width="250" />
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                                        <tbody>
-                                            <tr>
-                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                    <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
-                                                        Người dùng *|USERNAME|* vừa cập nhật bài viết.
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>',
-                'mobile_template' => '',
-                'web_template'  => ''
-            ],
-            [
-                'name' => 'Thông báo có admin cập nhật trạng thái sản phẩm',
-                'slug' => 'thong-bao-co-admin-cap-nhat-trang-thai-san-pham',
-                'email_template' => '<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                                        <tbody>
-                                            <tr>
-                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="width:250px;">
-                                                                    <img alt="logo" height="auto" src="*|LOGO_URL|*" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:14px;" width="250" />
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                                        <tbody>
-                                            <tr>
-                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                                    <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
-                                                        Tài khoản *|USERNAME|* vừa cập nhật trạng thái sản phẩm.
+                                                        Admin vừa tạo mới mới bài viết.
                                                     </div>
                                                 </td>
                                             </tr>
@@ -242,7 +174,109 @@ class NotificationTableSeeder extends Seeder
                                             <tr>
                                                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                                                     <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
-                                                        Tài khoản *|USERNAME|* vừa cập nhật bài viết.
+                                                        Admin vừa cập nhật bài viết.
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>',
+                'mobile_template' => '',
+                'web_template'  => ''
+            ],
+            [
+                'name' => 'Thông báo có admin cập nhật trạng thái sản phẩm',
+                'slug' => 'thong-bao-co-admin-cap-nhat-trang-thai-san-pham',
+                'email_template' => '<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width:250px;">
+                                                                    <img alt="logo" height="auto" src="*|LOGO_URL|*" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:14px;" width="250" />
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                    <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
+                                                        Admin vừa cập nhật trạng thái sản phẩm.
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>',
+                'mobile_template' => '',
+                'web_template'  => ''
+            ],
+            [
+                'name' => 'Thông báo có admin tạo mới sản phẩm',
+                'slug' => 'thong-bao-co-admin-tao-moi-san-pham',
+                'email_template' => '<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width:250px;">
+                                                                    <img alt="logo" height="auto" src="*|LOGO_URL|*" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:14px;" width="250" />
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                    <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
+                                                        Admin vừa tạo mới sản phẩm.
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>',
+                'mobile_template' => '',
+                'web_template'  => ''
+            ],
+            [
+                'name' => 'Thông báo có admin cập nhật sản phẩm',
+                'slug' => 'thong-bao-co-admin-cap-nhat-san-pham',
+                'email_template' => '<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width:250px;">
+                                                                    <img alt="logo" height="auto" src="*|LOGO_URL|*" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:14px;" width="250" />
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                    <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
+                                                        Admin vừa cập nhật sản phẩm.
                                                     </div>
                                                 </td>
                                             </tr>
@@ -276,7 +310,7 @@ class NotificationTableSeeder extends Seeder
                                             <tr>
                                                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                                                     <div style="font-family:Montserrat, Arial, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555555;">
-                                                        Tài khoản *|USERNAME|* vừa cập nhật trạng thái bài viết.
+                                                        Admin vừa cập nhật trạng thái bài viết.
                                                     </div>
                                                 </td>
                                             </tr>
