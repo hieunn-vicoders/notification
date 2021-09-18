@@ -44,7 +44,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Người dùng yêu cầu đổi mật khẩu.',
                 'web_template'  => ''
             ],
             [
@@ -78,7 +78,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Người dùng tạo mới tài khoản.',
                 'web_template'  => ''
             ],
             [
@@ -112,7 +112,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Admin vừa tạo yêu cầu đặt lại mật khẩu cho người dùng.',
                 'web_template'  => ''
             ],
             [
@@ -146,7 +146,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Admin vừa tạo mới mới bài viết.',
                 'web_template'  => ''
             ],
             [
@@ -180,7 +180,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Admin vừa cập nhật bài viết.',
                 'web_template'  => ''
             ],
             [
@@ -214,7 +214,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Admin vừa cập nhật trạng thái sản phẩm.',
                 'web_template'  => ''
             ],
             [
@@ -248,7 +248,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Admin vừa tạo mới sản phẩm.',
                 'web_template'  => ''
             ],
             [
@@ -282,7 +282,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Admin vừa cập nhật sản phẩm.',
                 'web_template'  => ''
             ],
             [
@@ -316,7 +316,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Admin vừa cập nhật trạng thái bài viết.',
                 'web_template'  => ''
             ],
             [
@@ -428,7 +428,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Người dùng tạo đơn hàng mới',
                 'web_template'  => ''
             ],
             [
@@ -496,7 +496,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Admin cập nhật trạng thái đơn hàng.',
                 'web_template'  => ''
             ],
             [
@@ -530,7 +530,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Admin tạo mới review.',
                 'web_template'  => ''
             ],
             [
@@ -642,7 +642,7 @@ class NotificationTableSeeder extends Seeder
                                             </tr>
                                         </tbody>
                                     </table>',
-                'mobile_template' => '',
+                'mobile_template' => 'Người dùng tạo mới liên hệ',
                 'web_template'  => ''
             ],
             [

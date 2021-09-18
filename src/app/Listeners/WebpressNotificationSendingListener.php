@@ -53,7 +53,7 @@ class WebpressNotificationSendingListener
             
             $to_users = $users->filter(function ($user) use ($notificationable_ids) {
                 return in_array($user->id, $notificationable_ids);
-            })->pluck('email')->toArray();
+            });
     
             if (!count($to_users)) {
                 return false;

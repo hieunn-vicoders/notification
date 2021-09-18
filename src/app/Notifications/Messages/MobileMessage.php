@@ -5,14 +5,21 @@ namespace VCComponent\Laravel\Notification\Notifications\Messages;
 class MobileMessage
 {
     private $user_id;
-    private $header = [];
-    private $content = [];
-    private $url = "";
-    private $data = [];
+    private $emails = [];
+    private $header;
+    private $content;
+    private $url;
+    private $data;
 
     public function to($user_id)
     {
         $this->user_id = $user_id;
+        return $this;
+    }
+
+    public function ToEmail($emails)
+    {
+        $this->emails = $emails;
         return $this;
     }
 
@@ -44,6 +51,7 @@ class MobileMessage
     {
         return [
             'to'            => $this->user_id,
+            'email'         => $this->emails,
             'headers'       => ['en' => $this->header],
             'contents'      => ['en' => $this->content],
             'url'           => $this->url,
