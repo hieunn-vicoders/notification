@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification as BaseNotification;
 use Illuminate\Support\Collection;
 use stdClass;
+use VCComponent\Laravel\Notification\Notifications\Channels\MobileChannel;
 use VCComponent\Laravel\Notification\Notifications\Channels\WebpressChannel;
 use VCComponent\Laravel\Notification\Notifications\Messages\MobileMessage;
 use VCComponent\Laravel\Notification\Notifications\Messages\WebpressMessage;
@@ -38,7 +39,7 @@ class Notification extends BaseNotification
      */
     public function via($notifiable)
     {
-        return [WebpressChannel::class];
+        return [WebpressChannel::class, MobileChannel::class];
     }
 
     /**

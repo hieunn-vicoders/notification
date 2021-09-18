@@ -50,7 +50,7 @@ class MobileMessage
     public function buildParams()
     {
         return [
-            'to'            => $this->user_id,
+            'user_id'       => $this->user_id,
             'email'         => $this->emails,
             'headers'       => ['en' => $this->header],
             'contents'      => ['en' => $this->content],
