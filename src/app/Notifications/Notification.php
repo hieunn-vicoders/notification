@@ -75,7 +75,7 @@ class Notification extends BaseNotification
         return (new MobileMessage())
             ->toEmail($this->to_users->pluck('email')->toArray())
             ->header($this->notification->name)
-            ->content($this->notification->mobile_template)
+            ->content($this->notification->mobile_template);
     }
 
     /**
