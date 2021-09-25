@@ -2,8 +2,6 @@
 
 namespace VCComponent\Laravel\Notification\Notifications\Messages;
 
-use stdClass;
-
 class MobileMessage
 {
     private $emails = [];
@@ -12,7 +10,7 @@ class MobileMessage
     private $url;
     private $data;
 
-    public function ToEmail($emails)
+    public function toEmail($emails)
     {
         $this->emails = $emails;
         return $this;
